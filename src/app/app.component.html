@@ -10,7 +10,7 @@
       </button>
       <div>Receptek</div>
 
-      <app-menu [loggedInUserInput]="loggedInUser" [isSideNav]="false"></app-menu>
+      <app-menu *ngIf="width>600" [loggedInUserInput]="loggedInUser" [isSideNav]="false"></app-menu>
 
     </mat-toolbar>
     <div class="all-content">

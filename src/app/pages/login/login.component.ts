@@ -18,7 +18,7 @@ export class LoginComponent {
 
     this.authServ.login(this.email.value as string, this.password.value as string).then(cred => {
       //console.log(cred);
-      this.router.navigateByUrl('/register');
+      this.router.navigateByUrl('/main');
       
     }).catch(error => {
       console.error(error)

@@ -21,12 +21,14 @@ import { LoginModule } from './pages/login/login.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { MainComponent } from './pages/main/main.component';
+import { NewRecipeComponent } from './pages/new-recipe/new-recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    MainComponent
+    MainComponent,
+    NewRecipeComponent
   ],
   imports: [
     BrowserModule,
