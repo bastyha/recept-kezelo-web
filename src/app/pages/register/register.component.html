@@ -1,3 +1,7 @@
+<span class="loading-indicator" *ngIf="loading">
+    <mat-progress-spinner></mat-progress-spinner>
+</span>
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="inputs">
         <div>Register</div>

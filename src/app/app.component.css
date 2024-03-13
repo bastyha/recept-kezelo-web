@@ -24,7 +24,10 @@
 }
 mat-sidenav-container{
     height: 100%;
-    
+}
+mat-sidenav{
+    position: fixed;
+    height: 100%;
 }
 mat-toolbar{
     
@@ -36,5 +39,5 @@ app-menu{
 
 }
 .all-content{
-    
+
 }

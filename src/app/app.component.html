@@ -1,6 +1,6 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <app-menu [isSideNav]="true" (onCloseSideNav)="closeSidenav($event, sidenav)"></app-menu>
+<mat-sidenav-container >
+  <mat-sidenav #sidenav  >
+    <app-menu [loggedInUserInput]="loggedInUser" [isSideNav]="true" (onCloseSideNav)="closeSidenav($event, sidenav)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="toolbar">
@@ -10,7 +10,7 @@
       </button>
       <div>Receptek</div>
 
-      <app-menu [isSideNav]="false"></app-menu>
+      <app-menu [loggedInUserInput]="loggedInUser" [isSideNav]="false"></app-menu>
 
     </mat-toolbar>
     <div class="all-content">

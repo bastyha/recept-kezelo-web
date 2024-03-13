@@ -1,11 +1,17 @@
 <mat-nav-list [class.nav-toolbar]="!isSideNav" [class.nav-sidenav]="isSideNav">
-    <a mat-list-item routerLink="/register" (click)="close()">
-        <span>Register</span>
-    </a>
-    <a mat-list-item routerLink="/login" (click)="close()">
-        <span>Login</span>
-    </a>
     <a mat-list-item routerLink="" (click)="close()">
         <mat-icon>home</mat-icon>
+    </a>
+    <a mat-list-item *ngIf="!(loggedInUserInput)" routerLink="/register" (click)="close()">
+        <span>Register</span>
+    </a>
+    <a mat-list-item *ngIf="!(loggedInUserInput)" routerLink="/login" (click)="close()">
+        <span>Login</span>
+    </a>
+    <a mat-list-item *ngIf="(loggedInUserInput)" (click)="logout()">
+        <ng-container [ngSwitch]="isSideNav">
+            <mat-icon *ngSwitchCase="true">logout</mat-icon>
+            <span *ngSwitchCase="false">Logout</span>
+        </ng-container>
     </a>
 </mat-nav-list>
