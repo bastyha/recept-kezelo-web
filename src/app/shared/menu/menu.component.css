@@ -1,0 +1,31 @@
+.nav-toolbar{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    width: 100%;
+    text-align: center;
+    justify-content: flex-end;
+    align-content: center;
+}
+.nav-sidenav{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 140px;;
+    gap: 3em;
+    align-items: center;
+    margin-top: 10%;
+    font-size: larger;
+    
+}
+.nav-toolbar a, .nav-sidenav a{
+    text-decoration: none;
+    color: #6200EA;
+
+}
+
+mat-icon{
+    display: inline-flex;
+    line-height: 32px;
+    vertical-align: top;
+}

@@ -1,0 +1,28 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 60vw;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+.name-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+.buttons button{
+    width: 7em;
+    margin: 2vw;
+}

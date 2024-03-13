@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "recept-kezelo": {
+      "hosting": {
+        "recept-kezelo": [
+          "recept-kezelo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "recept-kezelo"
+  }
+}

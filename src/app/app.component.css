@@ -1,0 +1,40 @@
+.nav-toolbar{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    width: 100%;
+    text-align: end;
+    justify-content: flex-end;
+
+}
+
+.nav-toolbar a{
+    text-decoration: none;
+    color: #FFECB3;
+}
+
+.nav-toolbar a:hover{
+    
+    color: #FFB300;
+}
+
+.nav-toolbar li{
+    list-style: none;
+  
+}
+mat-sidenav-container{
+    height: 100%;
+    
+}
+mat-toolbar{
+    
+    background-color: #FFA000;
+    color: #6200EA;
+}
+app-menu{
+    width: 100%;
+
+}
+.all-content{
+    
+}

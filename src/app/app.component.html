@@ -1,0 +1,21 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-menu [isSideNav]="true" (onCloseSideNav)="closeSidenav($event, sidenav)"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button mat-icon-button (click)="onToggleSideNav(sidenav)" >
+
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div>Receptek</div>
+
+      <app-menu [isSideNav]="false"></app-menu>
+
+    </mat-toolbar>
+    <div class="all-content">
+
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
