@@ -1,1 +1,85 @@
-<p>new-recipe works!</p>
+<span class="loading-indicator" *ngIf="loading">
+    <mat-spinner ></mat-spinner>
+</span>
+<form [formGroup]="recipeForm" class="recipeform" >
+    <mat-form-field>
+        <mat-label for="name">The recipe's name:</mat-label>
+        <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+        <label for="timeInMinutes">Cooking time:</label>
+        <input matInput type="time" formControlName="timeInMinutes">
+    </mat-form-field>
+    <div>
+        
+        <mat-card>
+            <mat-card-header>
+                <div>Ingredients</div>
+            </mat-card-header>
+            <mat-card-content >
+
+                <ng-container formArrayName="ingredients">
+                    <ng-container *ngFor="let ingred of ingerdients.controls; let i = index">
+                        <div formGroupName="{{i}}">
+
+                            <mat-form-field >
+                                <mat-label for="nameOfIngredient">Name of the ingredient</mat-label>
+                                <input matInput type="text" formControlName="nameOfIngredient"/>
+                            </mat-form-field>
+                            <mat-form-field >
+                                <mat-label for="amount">Amount</mat-label>
+                                <input matInput type="number" formControlName="amount">
+                            </mat-form-field>
+                            <mat-form-field >
+                                <mat-label for="unit">Unit</mat-label>
+                                <input matInput type="text" formControlName="unit">
+                            </mat-form-field>
+                            <button mat-fab color="warn" (click)="deleteIngredient(i)"><mat-icon>delete</mat-icon></button>
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+            </mat-card-content>
+            <mat-card-actions>
+                
+                <button mat-fab (click)="addIngredient()"><mat-icon>add</mat-icon></button>
+            </mat-card-actions>
+        </mat-card>
+
+
+        <mat-card>
+            <mat-card-header>
+                <div>Steps to make the dish</div>
+            </mat-card-header>
+            <mat-card-content>
+
+                <ng-container formArrayName="steps">
+                    <ng-container *ngFor="let step of steps.controls; let j = index">
+                        <div formGroupName="{{j}}">
+
+
+                            <label>{{j+1}}.step</label>
+                            <mat-form-field >
+                                <mat-label for="stepDescription">What to do?</mat-label>
+                                <input matInput type="text" formControlName="stepDescription">
+                            </mat-form-field>
+                            <button mat-fab color="warn" (click)="deleteStep(j)"><mat-icon>delete</mat-icon></button>
+                            
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <mat-card-actions>
+                    <button mat-fab (click)="addStep()"><mat-icon>add</mat-icon></button>
+                </mat-card-actions>
+            </mat-card-content>
+
+
+        </mat-card>
+
+    
+        <label for="">Picture  of the food:</label>
+        <input  type="file" formControlName="picture" accept="image/png, image/jpg" (change)="onFileSelected($event)">
+
+        <button  mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+    </div>
+</form> 
