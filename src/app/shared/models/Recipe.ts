@@ -8,6 +8,6 @@ export interface Recipe {
         amount: number;
         unit: string;
     }]|null;
-    steps:[]|null;
+    steps:[{stepDescription:string}]|null;
     image_id:string;
 }

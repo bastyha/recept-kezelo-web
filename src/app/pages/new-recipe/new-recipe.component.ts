@@ -98,7 +98,7 @@ export class NewRecipeComponent {
   async onSubmit() {
     
 
-    const loggedinGuy = JSON.parse(localStorage.getItem('user') as string);
+    const loggedinGuy:firebase.default.User = JSON.parse(localStorage.getItem('user') as string);
     this.loading = true;
     if (this.recipeForm.valid) {
      
@@ -107,10 +107,10 @@ export class NewRecipeComponent {
         id: '',
         image_id: '',
         name: this.recipeForm.get('name')?.value as string,
-        owner: loggedinGuy['uid'],
+        owner: loggedinGuy.uid,
         timeInMinutes: this.convertTime((this.recipeForm.get('timeInMinutes')?.value as string)),
         ingredients: this.recipeForm.get('ingredients')?.value as [{ nameOfIngredient: string; amount: number; unit: string; }],
-        steps: this.recipeForm.get('steps')?.value as []
+        steps: this.recipeForm.get('steps')?.value as [{stepDescription:string}]
 
       }
 
@@ -119,7 +119,9 @@ export class NewRecipeComponent {
       
         const picture: Picture = {
           id: '',
-
+          uploader:loggedinGuy.uid,
+          extension:'',
+        
          
         }
 
@@ -127,9 +129,11 @@ export class NewRecipeComponent {
 
         recipe.image_id = picture.id;
       }
-      console.log(recipe);
+      
       
       this.recipeServ.create(recipe).then(_ => {
+
+        
         this.router.navigateByUrl('/main');
 
       }).catch(err => {

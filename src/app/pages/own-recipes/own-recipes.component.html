@@ -1,0 +1,41 @@
+<span class="loading-indicator" *ngIf="loading">
+    <mat-spinner ></mat-spinner>
+</span>
+
+<ng-container *ngIf="recipes.length<=0">
+    <mat-spinner></mat-spinner>
+</ng-container>
+
+
+
+<ng-container *ngIf="recipes.length>0" >
+    <ng-container *ngFor="let recipe of recipes">
+
+        <mat-card>
+            <mat-card-header>{{recipe.name}}</mat-card-header>
+            <mat-card-content>
+                <img [src]="recipe.image_id!=''?pictures.get(recipe.id):''" alt="not good">
+                <div>{{recipe.timeInMinutes|minuteToHours}}</div>
+                <hr>
+                <div>
+                    <p>Hozzávalók</p>
+                    <ng-container *ngFor="let ing of recipe.ingredients">
+                        <div>{{ing.amount}} {{ing.unit}} {{ing.nameOfIngredient}}</div>
+                    </ng-container>
+                </div>
+                <hr>
+                <div>
+                    <p>Lépések</p>
+                    <ng-container *ngFor="let step of recipe.steps;let i = index">
+                        
+                        <div><span>{{i+1}}.</span> <span>{{step.stepDescription }} </span></div>
+                    </ng-container>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-fab> <mat-icon>edit</mat-icon> </button>
+                <button mat-fab color="warn" (click)="deleteRecpie(recipe)"><mat-icon>delete</mat-icon> </button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
+</ng-container>

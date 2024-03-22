@@ -5,6 +5,9 @@
     <a mat-list-item *ngIf="(loggedInUserInput)" routerLink="/new-recipe" (click)="close()">
         <span>Add recipe</span>
     </a>
+    <a mat-list-item *ngIf="(loggedInUserInput)" routerLink="/own-recipes" (click)="close()">
+        <span>Profil</span>
+    </a>
     <a mat-list-item *ngIf="!(loggedInUserInput)" routerLink="/login" (click)="close()">
         <span>Login</span>
     </a>

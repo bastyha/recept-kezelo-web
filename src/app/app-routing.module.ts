@@ -14,13 +14,18 @@ const routes: Routes = [
     canActivate:[loggedInGuard]
   },
   {
-    path:'main',
-    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
-  },
-  {
     path:'new-recipe',
     loadChildren: () => import('./pages/new-recipe/new-recipe.module').then(m=>m.NewRecipeModule),
     canActivate:[authGuard]
+  },
+  {
+    path:'own-recipes',
+    loadChildren: () => import('./pages/own-recipes/own-recipes.module').then(m=>m.OwnRecipesModule),
+    canActivate:[authGuard] 
+  },
+  {
+    path:'main',
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
   },
   {
     path:'**', 
