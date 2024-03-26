@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from "@angular/fire/compat/storage";
 import { Picture } from '../models/Picture';
 import { finalize, of } from 'rxjs';
+import { Recipe } from '../models/Recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PictureService {
   constructor(private afs:AngularFirestore, private storage: AngularFireStorage) { }
 
   async create(filePic:Picture, fileLoad:File){
-    filePic.id=this.afs.createId();
+    filePic.id= filePic.id==""? this.afs.createId():filePic.id;
 
     let file_path_name= fileLoad.name.split('.');
     let extension = file_path_name[file_path_name.length-1];
@@ -35,6 +36,29 @@ export class PictureService {
     }
     return this.afs.collection<Picture>(this.collectionName, ref=>ref.where('id', '==', id)).valueChanges();
   }
+
+  addPicUrlToMap(recipes:Recipe[], pictures:Map<string , any>){
+    for(let recipe of recipes){
+      this.getPicture(recipe.image_id).subscribe({
+        next:value=> {
+          this.getUrl(value?value[0]:null).subscribe({
+            next:url=>{
+
+              pictures.set(recipe.id,url);
+            },
+            error:err=>{
+              console.error(err);
+            }
+          })
+        },
+        error:err=> {
+          console.error(err);
+        },
+      });
+    }
+  }
+
+
   getUrl(pic:any){
     if(!pic) return of("");
     return this.storage.ref(this.bucketName+"/"+pic.id+"."+pic.extension).getDownloadURL();
@@ -42,5 +66,9 @@ export class PictureService {
   async delete(pic:Picture){
     this.storage.ref(this.bucketName+"/"+pic.id+"."+pic.extension).delete();
     await this.afs.doc(this.collectionName +'/'+ pic.id).ref.delete();
+  }
+  async update(pic:Picture, fileLoad:File){
+    await this.delete(pic);
+    await this.create(pic, fileLoad);
   }
 }

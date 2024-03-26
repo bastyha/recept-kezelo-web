@@ -27,9 +27,6 @@ import { MainComponent } from './pages/main/main.component';
   declarations: [
     AppComponent,
     MenuComponent,
-    MainComponent,
- 
-
   ],
   imports: [
     BrowserModule,

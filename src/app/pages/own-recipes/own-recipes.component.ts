@@ -20,36 +20,14 @@ export class OwnRecipesComponent implements OnInit {
 
   }
 
-  getPictureWrapper(recipe:Recipe){
-
-    this.pictureServ.getPicture(recipe.image_id).subscribe({
-      next:value=> {
-        this.pictureServ.getUrl(value?value[0]:null).subscribe({
-          next:url=>{
-
-            this.pictures.set(recipe.id,url);
-          },
-          error:err=>{
-            console.error(err);
-          }
-        })
-      },
-      error:err=> {
-        console.error(err);
-      },
-    });
-  }
   ngOnInit(): void {
     let loggedInUser:firebase.default.User = JSON.parse(localStorage.getItem('user') as string);
     if(loggedInUser){
-      this.recipeServ.getRecipeByUserID(loggedInUser.uid).subscribe(recipes=>{
+      this.recipeServ.get(null, null, loggedInUser.uid).subscribe(recipes=>{
         this.recipes=recipes;
-        for (const recipe of recipes) {
         
-          this.getPictureWrapper(recipe);
-          
-
-        }
+        this.pictureServ.addPicUrlToMap(recipes, this.pictures);
+        
       });
     }
   }
@@ -57,21 +35,9 @@ export class OwnRecipesComponent implements OnInit {
    deleteRecpie(recipe: Recipe) {
     if(confirm('You sure you wanna delete '+recipe.name+'?')){
       this.loading=true;
-      if(recipe.image_id){
-
-        firstValueFrom(this.pictureServ.getPicture(recipe.image_id)).then(
-        val1=>{
-
-              this.recipeServ.delete(recipe);
-              this.pictureServ.delete(val1[0]);
-              
-             
-            }).catch(err=>console.error(err));
-       
-      }else{
-        this.recipeServ.delete(recipe);
-      }
-      this.loading=false;
+      this.recipeServ.delete(recipe).then(_=>
+        this.loading=false
+        ).catch(err =>{console.error(err);this.loading=false});
     }
   }
 }

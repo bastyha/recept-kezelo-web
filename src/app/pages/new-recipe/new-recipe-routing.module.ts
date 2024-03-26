@@ -4,6 +4,10 @@ import { NewRecipeComponent } from './new-recipe.component';
 
 const routes: Routes = [
   {
+    path:':baseId',
+    component:NewRecipeComponent
+  },
+  {
     path:'',
     component:NewRecipeComponent
   }

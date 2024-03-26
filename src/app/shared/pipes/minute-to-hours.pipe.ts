@@ -18,4 +18,24 @@ export class MinuteToHoursPipe implements PipeTransform {
     return output;
   }
 
+  transform1(value:number):string{
+    let output="";
+    let hours = Math.floor(value/60);
+    let mintues = value-(hours*60);
+
+    if(hours>10){
+      output+=hours;
+    }else {
+      output+='0'+hours;
+    }
+    output+=':';
+    if(mintues>10){
+      output+=mintues;
+    }else {
+      output+='0'+mintues;
+    }
+
+    return output;
+  }
+
 }

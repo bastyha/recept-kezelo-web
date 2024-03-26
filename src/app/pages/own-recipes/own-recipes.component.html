@@ -33,7 +33,7 @@
                 </div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-fab> <mat-icon>edit</mat-icon> </button>
+                <button mat-fab routerLink="/new-recipe/{{recipe.id}}"> <mat-icon>edit</mat-icon> </button>
                 <button mat-fab color="warn" (click)="deleteRecpie(recipe)"><mat-icon>delete</mat-icon> </button>
             </mat-card-actions>
         </mat-card>

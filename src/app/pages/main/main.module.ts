@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
+import { MainComponent } from './main.component';
+import { MinuteToHoursPipe } from '../../shared/pipes/minute-to-hours.pipe';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainComponent,
+    MinuteToHoursPipe
+  ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+   
   ]
 })
 export class MainModule { }

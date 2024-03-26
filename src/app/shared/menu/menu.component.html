@@ -1,4 +1,4 @@
-<mat-nav-list [class.nav-toolbar]="!isSideNav" [class.nav-sidenav]="isSideNav">
+<mat-nav-list  [ngClass]="isSideNav?'nav-sidenav':'nav-toolbar'" >
     <a mat-list-item routerLink="/main" (click)="close()">
         <mat-icon>home</mat-icon>
     </a>

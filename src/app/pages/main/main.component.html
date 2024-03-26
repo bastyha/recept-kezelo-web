@@ -1,1 +1,19 @@
-<p>main works!</p>
+<div  id="recipes">
+
+    <ng-container *ngFor="let recipe of recipeDisplay;">
+        <div class="card" [routerLink]="'/view-recipe/'+recipe.id">
+            
+            <img *ngIf="pictures.get(recipe.id)" [src]="pictures.get(recipe.id)">
+            <h1>{{recipe.name}}</h1>
+            <h2>{{recipe.timeInMinutes|minuteToHours}}</h2>
+            <ng-container *ngIf="!pictures.get(recipe.id)">
+                <hr style="width: 50%;"/>
+                <div>Hozzávalók:</div>
+                <ng-container *ngFor="let ing of recipe.ingredients;">
+                    <div>{{ing.amount}} {{ing.unit}} {{ing.nameOfIngredient}}</div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </ng-container>
+    
+</div>

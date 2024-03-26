@@ -77,8 +77,9 @@
         </mat-card>
 
     
-        <label for="">Picture  of the food:</label>
-        <input  type="file" formControlName="picture" accept="image/png, image/jpg" (change)="onFileSelected($event)">
+        <label>{{!baseRecipe?"Picture  of the food:":"Upload picture, if you want to update the current one"}}
+            <input  type="file" formControlName="picture" accept="image/png, image/jpg, image/jpeg" (change)="onFileSelected($event)">
+        </label>
 
         <button  mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
     </div>

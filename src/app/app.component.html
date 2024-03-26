@@ -3,19 +3,22 @@
     <app-menu [loggedInUserInput]="loggedInUser" [isSideNav]="true" (onCloseSideNav)="closeSidenav($event, sidenav)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="toolbar">
-      <button mat-icon-button (click)="onToggleSideNav(sidenav)" >
+    <mat-toolbar color="primary">
+      
 
+      <button mat-icon-button (click)="onToggleSideNav(sidenav)" >
+        
         <mat-icon>menu</mat-icon>
       </button>
       <div>Receptek </div>
-
+      
       <app-menu *ngIf="width>600" [loggedInUserInput]="loggedInUser" [isSideNav]="false"></app-menu>
+  
 
     </mat-toolbar>
-    <div class="all-content">
+    
 
-      <router-outlet />
-    </div>
+    <router-outlet />
+    
   </mat-sidenav-content>
 </mat-sidenav-container>
