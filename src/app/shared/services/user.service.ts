@@ -16,12 +16,7 @@ collectionName='Users';
   }
 
   getAll(){
-
+    return this.afs.collection<User>(this.collectionName).valueChanges();
   }
-  update(){
 
-  }
-  delete(id:string){
-
-  }
 }

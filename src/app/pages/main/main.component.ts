@@ -1,8 +1,7 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RecipeService } from '../../shared/services/recipe.service';
 import { Recipe } from '../../shared/models/Recipe';
 import { PictureService } from '../../shared/services/picture.service';
-import { MinuteToHoursPipe } from '../../shared/pipes/minute-to-hours.pipe';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
@@ -11,22 +10,36 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit{
   recipeDisplay: Array<Recipe> =[];
+  recipes:Array<Recipe>=[];
   pictures: Map<string, any>= new Map();
+  recipeFilter :string ='';
+
   constructor(private recipeServ: RecipeService,
               private pictureServ: PictureService,
               private router:Router)
   {}
 
+  changeDisplayed($event:any): void {
+    
+    this.recipeDisplay=this.recipes.filter(val=>{
+      return val.name.toLowerCase().includes(this.recipeFilter.toLowerCase());
+    });
+  }
+
+
   ngOnInit(): void {
     this.recipeServ.get().subscribe({
       next: val =>{
-        this.recipeDisplay=val;
-        
+        this.recipes=val;
+        this.recipeDisplay=this.recipes;
         this.pictureServ.addPicUrlToMap(val, this.pictures);
       },
       error: err =>console.error("sajat"+err)
     })
   }
+
+
+
 
   
 }

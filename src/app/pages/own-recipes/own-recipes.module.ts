@@ -5,15 +5,15 @@ import { OwnRecipesRoutingModule } from './own-recipes-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { OwnRecipesComponent } from './own-recipes.component';
 import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MinuteToHoursPipe } from '../../shared/pipes/minute-to-hours.pipe';
 import {  MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { PipeShareModule } from '../../shared/pipe-share/pipe-share.module';
 
 
 @NgModule({
   declarations: [
     OwnRecipesComponent,
-    MinuteToHoursPipe
+
   ],
   imports: [
     CommonModule,
@@ -21,7 +21,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule, 
     MatProgressSpinnerModule,
     MatButtonModule, 
-    MatIconModule
-  ]
+    MatIconModule,
+    PipeShareModule
+  ],
+
 })
 export class OwnRecipesModule { }

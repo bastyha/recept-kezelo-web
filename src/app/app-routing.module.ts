@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
   },
   {
+    path:'view-recipe',
+    loadChildren: () => import('./pages/view-recipe/view-recipe.module').then(m => m.ViewRecipeModule)
+  },
+  {
     path:'**', 
     redirectTo:'/main',
     pathMatch:'full'

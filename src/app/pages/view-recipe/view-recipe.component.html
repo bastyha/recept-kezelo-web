@@ -1,0 +1,14 @@
+<h1>{{recipe?.name}}</h1>
+<img *ngIf="pic.get(recipe?.id??'')" [src]="pic.get(recipe?.id??'')" />
+<div>{{recipe?.timeInMinutes??0|minuteToHours}}</div>
+<div>Készítette: {{owner?.name?.lastname}} {{owner?.name?.firstname}}</div>
+<ul >
+    <ng-container *ngFor="let ing of recipe?.ingredients;">
+        <li>{{ing.amount}} {{ing.unit}} {{ing.nameOfIngredient}}</li>
+    </ng-container>
+</ul>
+<ol>
+    <ng-container *ngFor="let step of recipe?.steps;">    
+        <li>{{step.stepDescription}}</li>
+    </ng-container>
+</ol>
