@@ -1,0 +1,18 @@
+<div>
+    <ng-container *ngFor="let rev of reviews ;">
+        <div>
+            <p>{{nameForId[rev.reviewer]}}</p>
+            <p>{{rev.date|date:"YYYY-MM-dd HH:mm:ss"}}</p>
+        </div>
+        <div>
+            {{rev.text}}
+        </div>
+    </ng-container>
+</div>
+<div *ngIf="loggedInUser">
+    <mat-form-field>
+        <mat-label for="review">Oszd meg véleményed!</mat-label>
+        <textarea matInput type="text" [formControl]="review"></textarea>
+    </mat-form-field>
+    <button (click)="addReview()" mat-fab color="primary"> <mat-icon>done</mat-icon> </button>
+</div>

@@ -6,13 +6,14 @@ import { MinuteToHoursPipe } from '../pipes/minute-to-hours.pipe';
 
 @NgModule({
   declarations: [
-    MinuteToHoursPipe
+    MinuteToHoursPipe,
+    
   ],
   imports: [
     CommonModule
   ],
   exports:[
-    MinuteToHoursPipe
+    MinuteToHoursPipe,
   ]
 })
 export class PipeShareModule { }

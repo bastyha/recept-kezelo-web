@@ -4,18 +4,19 @@ import { CommonModule } from '@angular/common';
 import { ViewRecipeRoutingModule } from './view-recipe-routing.module';
 import { ViewRecipeComponent } from './view-recipe.component';
 import { PipeShareModule } from '../../shared/pipe-share/pipe-share.module';
-import { CommentSectionComponent } from './comment-section/comment-section.component';
-
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
     ViewRecipeComponent,
-    CommentSectionComponent
+
   ],
   imports: [
     CommonModule,
     ViewRecipeRoutingModule,
-    PipeShareModule
+    PipeShareModule,
+    ReviewsComponent,
+ 
   ]
 })
 export class ViewRecipeModule { }

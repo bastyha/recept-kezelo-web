@@ -18,7 +18,6 @@ import { MatNavList } from "@angular/material/list";
 import { LoginModule } from './pages/login/login.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
-import { ViewRecipeComponent } from './pages/view-recipe/view-recipe.component';
 
 
 @NgModule({
