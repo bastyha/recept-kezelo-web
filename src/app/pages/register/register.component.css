@@ -5,8 +5,8 @@ form{
     justify-content: center;
     align-items: center;
     align-content: center;
-    height: 100%;
-    width: 60vw;
+    height: 90%;
+
 }
 .inputs{
     display: flex;
@@ -25,4 +25,30 @@ form{
 .buttons button{
     width: 7em;
     margin: 2vw;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+    padding: 30px;
+}
+
+@media screen and (max-width:500px) {
+    .name-input{
+        flex-direction: column;
+    }
+    .inputs{
+        width: 100%;
+        
+    }
+    form{
+        margin: 15px;
+    
+    }
+
+}
+
+@media  screen and (max-height:500px) {
+    form{
+        margin-top: 50px;
+    }
 }

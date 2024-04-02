@@ -49,7 +49,7 @@ export class ReviewsComponent implements OnChanges{
       this.reviewServ.getForRecipe(this.currentRecipe).subscribe(
         {
           next: res=>{
-            this.reviews=res;
+            this.reviews=res;       
             for(let rev of this.reviews){
               this.namePrint(rev.reviewer);
             }

@@ -17,7 +17,7 @@ export class ReviewService {
   }
 
   getForRecipe(recipe:Recipe){  
-    return this.afs.collection<Review>(this.collectionName, ref=>ref.where('recipe', "==", recipe.id).orderBy('datum', 'desc')).valueChanges();
+    return this.afs.collection<Review>(this.collectionName, ref=>ref.where('recipe', "==", recipe.id).orderBy('date', 'desc')).valueChanges();
   }
   delete(recipe:Recipe){
     return this.afs.collection<Review>(this.collectionName, ref=>ref.where('recipe', "==", recipe.id))

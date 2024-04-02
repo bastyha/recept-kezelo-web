@@ -1,9 +1,9 @@
+<div class="searchbar"> 
+    <input  [(ngModel)]="recipeFilter" placeholder="Keress egy recept nevére!" (ngModelChange)="changeDisplayed($event)" type="text" value="asd">
+</div>
+
 <div id="recipes">
 
-    <label > Keress Rá!
-        <input [(ngModel)]="recipeFilter" (ngModelChange)="changeDisplayed($event)" type="text" value="asd">
-    </label>
-   
     <ng-container *ngFor="let recipe of recipeDisplay;">
         <div class="card" [routerLink]="'/view-recipe/'+recipe.id">
 

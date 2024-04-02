@@ -23,9 +23,6 @@ export class LoginComponent {
         this.router.navigateByUrl('/main');
         
       }).catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.warn("de ki van már a faszom");
         
         alert("Incorrect email or password!");
         this.loading=false;
