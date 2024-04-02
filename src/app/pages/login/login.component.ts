@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,19 +10,31 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router: Router, private authServ: AuthService) { }
-  email = new FormControl('');
-  password = new FormControl('');
+  email = new FormControl('',[Validators.required]);
+  password = new FormControl('', [Validators.required]);
   loading = false;
-  async login() {
+  login() {
     this.loading = true;
-
-    this.authServ.login(this.email.value as string, this.password.value as string).then(cred => {
-      //console.log(cred);
-      this.router.navigateByUrl('/main');
+    if(this.email.valid&&this.password.valid){
+   
+      this.authServ.login(this.email.value as string, this.password.value as string)
+      .then(cred => {
+        //console.log(cred);
+        this.router.navigateByUrl('/main');
+        
+      }).catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.warn("de ki van már a faszom");
+        
+        alert("Incorrect email or password!");
+        this.loading=false;
+      });
+     
       
-    }).catch(error => {
-      console.error(error)
+    }else{
+      alert("Email or password not provided");
       this.loading=false;
-    });
+    }
   }
 }

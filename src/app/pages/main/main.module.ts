@@ -7,8 +7,6 @@ import { MainComponent } from './main.component';
 import { FormsModule } from '@angular/forms';
 import { PipeShareModule } from '../../shared/pipe-share/pipe-share.module';
 
-
-
 @NgModule({
   declarations: [
     MainComponent,

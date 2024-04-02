@@ -10,10 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-
-
-
-
 @NgModule({
   declarations: [
     RegisterComponent
@@ -29,7 +25,4 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   ]
 })
 export class RegisterModule { 
-
-
-
 }

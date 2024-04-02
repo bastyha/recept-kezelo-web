@@ -25,8 +25,7 @@ export class MainComponent implements OnInit{
       return val.name.toLowerCase().includes(this.recipeFilter.toLowerCase());
     });
   }
-
-
+  
   ngOnInit(): void {
     this.recipeServ.get().subscribe({
       next: val =>{
@@ -37,9 +36,4 @@ export class MainComponent implements OnInit{
       error: err =>console.error("sajat"+err)
     })
   }
-
-
-
-
-  
 }

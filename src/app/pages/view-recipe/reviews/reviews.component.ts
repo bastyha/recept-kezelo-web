@@ -62,8 +62,6 @@ export class ReviewsComponent implements OnChanges{
   }
 
   namePrint(id:string){
- 
-    
     let usr= firstValueFrom(this.userServ.getAll());
     usr.then(res=>{
       let printable = res.find(val=>val.id==id);

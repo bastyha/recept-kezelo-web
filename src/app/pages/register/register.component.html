@@ -1,5 +1,5 @@
 <span class="loading-indicator" *ngIf="loading">
-    <mat-progress-spinner></mat-progress-spinner>
+    <mat-spinner></mat-spinner>
 </span>
 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -31,6 +31,6 @@
     </div>
     <div class="buttons">
         <button mat-raised-button type="submit">Register</button>
-        <button mat-raised-button routerLink="/login">Login instead</button>
+        <button mat-raised-button type="button" routerLink="/login">Login instead</button>
     </div>
 </form>

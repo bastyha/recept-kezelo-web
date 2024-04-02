@@ -5,6 +5,7 @@ import { User } from '../models/User';
 import { firstValueFrom } from 'rxjs';
 import { PictureService } from './picture.service';
 import { Picture } from '../models/Picture';
+import { ReviewService } from './review.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class RecipeService {
   collectionName='Recipes';
 
   constructor(private afs:AngularFirestore,
-              private pictureServ: PictureService) { }
+              private pictureServ: PictureService,
+              private reviewServ:ReviewService) { }
 
   create(recipe:Recipe){
     recipe.id = this.afs.createId();
@@ -48,7 +50,7 @@ export class RecipeService {
         
       
     }
-
+    this.reviewServ.delete(recipe);
     return this.afs.doc(this.collectionName+'/'+recipe.id).ref.delete();
   }
   update(recipe:Recipe, pic:Picture|null=null, filePic:File|null=null){
@@ -60,7 +62,6 @@ export class RecipeService {
         this.pictureServ.create(pic, filePic);  
       recipe.image_id=pic.id;
     }
-    
     return this.afs.collection<Recipe>(this.collectionName).doc(recipe.id).set(recipe);
   }
 

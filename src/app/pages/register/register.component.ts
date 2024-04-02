@@ -25,9 +25,9 @@ export class RegisterComponent {
   loading=false;
   onSubmit() {
     this.loading=true;
-    this.authServ.register(this.registerForm.get('email')?.value as string, this.registerForm.get('password')?.value as string).then(cred => {
-      
-      if (this.registerForm.valid && this.registerForm.get("password")?.value==this.registerForm.get("rePassword")?.value) {
+    
+    if (this.registerForm.valid && this.registerForm.get("password")?.value==this.registerForm.get("rePassword")?.value) {
+      this.authServ.register(this.registerForm.get('email')?.value as string, this.registerForm.get('password')?.value as string).then(cred => {
 
         const user: User = {
           id: cred.user?.uid as string,
@@ -41,12 +41,10 @@ export class RegisterComponent {
         this.userServ.create(user).then(_=>
           this.router.navigateByUrl("/main")
           ).catch(error =>{console.error(error);this.loading=false});
+        }).catch(error => {console.error(error);this.loading=false;});
       }else{
-        alert("Something is not good");
+        alert("Nincs minden szükséges mező kitöltve");
+        this.loading=false;
       }
-    }).catch(error => {console.error(error);this.loading=false;});
-
   }
-
-
 }

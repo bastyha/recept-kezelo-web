@@ -2,17 +2,21 @@
     <mat-spinner ></mat-spinner>
 </span>
 
-<ng-container *ngIf="recipes.length<=0">
+<ng-container *ngIf="!recipes">
     <mat-spinner></mat-spinner>
 </ng-container>
 
+<ng-container *ngIf="recipes&&recipes.length<=0">
+    <div>Nincsenek még receptjeid. Adj hozzá egyet!</div>
+    <button mat-raised-button  [routerLink]="'/new-recipe'" color="accent">Add new recipe</button>
+</ng-container>
 
 
-<ng-container *ngIf="recipes.length>0" >
+<ng-container  *ngIf="recipes&&recipes.length>0"  >
     <ng-container *ngFor="let recipe of recipes">
 
         <mat-card>
-            <mat-card-header>{{recipe.name}}</mat-card-header>
+            <mat-card-header [routerLink]="'/view-recipe/'+recipe.id">{{recipe.name}}</mat-card-header>
             <mat-card-content>
                 <img [src]="recipe.image_id!=''?pictures.get(recipe.id):''" alt="not good">
                 <div>{{recipe.timeInMinutes|minuteToHours}}</div>

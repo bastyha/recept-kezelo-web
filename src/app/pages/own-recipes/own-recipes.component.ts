@@ -11,7 +11,7 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './own-recipes.component.css'
 })
 export class OwnRecipesComponent implements OnInit {
-  recipes:Array<Recipe> =[];
+  recipes?:Array<Recipe>;
   pictures=new Map<string, any>();
   loading = false;
   constructor(private recipeServ:RecipeService, 

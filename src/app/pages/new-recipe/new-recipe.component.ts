@@ -126,16 +126,16 @@ export class NewRecipeComponent implements OnInit {
         this.recipeServ.get(result["baseId"]).subscribe({
           next:val=>{
        
-            if(result["baseId"]&& val[0] &&val[0].owner!=this.loggedinGuy.uid){
-             
+            if(!val[0]){
+              this.router.navigateByUrl("/new-recipe");
+            }else if(result["baseId"]&& val[0].owner!=this.loggedinGuy.uid){
               this.router.navigateByUrl('/main');
-            }else  if(result["baseId"]){
+            }else if(result["baseId"]){
               this.baseRecipe=val[0];
               this.recipeForm.get('name')?.setValue(this.baseRecipe?.name);
               const minute =new MinuteToHoursPipe();
               this.recipeForm.get('timeInMinutes')?.setValue(minute.transform1(this.baseRecipe.timeInMinutes));
               if(!wasSet){
-                
                 wasSet=true;
                 for(let ingredient of this.baseRecipe.ingredients??[]){
                   this.addIngredient(ingredient);
