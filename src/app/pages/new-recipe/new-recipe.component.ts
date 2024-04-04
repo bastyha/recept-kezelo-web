@@ -92,7 +92,7 @@ export class NewRecipeComponent implements OnInit {
       let picture: Picture |null = null;
       if (this.selectedFile) {
         const inpFileName = this.selectedFile.name.split('.');
-        if(inpFileName[inpFileName.length-1]!="png" || inpFileName[inpFileName.length-1]!="jpg" || inpFileName[inpFileName.length-1]!="jpeg"){
+        if(inpFileName[inpFileName.length-1]!="png" && inpFileName[inpFileName.length-1]!="jpg" && inpFileName[inpFileName.length-1]!="jpeg"){
           alert("Nem lehet nem képet feltölteni")
         }
         else if(this.baseRecipe){
