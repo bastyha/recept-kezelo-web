@@ -10,22 +10,44 @@
 .nav-sidenav{
     display: flex;
     flex-direction: column;
-    height: 90%;
-    width: 140px;;
+    width: 140px;
     gap: 3em;
     align-items: center;
-    margin-top: 10%;
-    font-size: larger;
     
+    font-size: larger; 
+    
+
+    height: 100%;
+    background-color: #FFA000;
 }
+.mdc-list{
+    padding: 0!important;
+}
+
 .nav-toolbar a, .nav-sidenav a{
     text-decoration: none;
     color: #6200EA;
 
 }
+.nav-toolbar a:hover{
+    color: #D81B60;
+}
+.nav-sidenav a{
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-sidenav a:hover{
+    background-color: #AB47BC;
+}
 
 mat-icon{
-    display: inline-flex;
-    line-height: 32px;
-    vertical-align: top;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
 }

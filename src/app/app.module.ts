@@ -18,12 +18,14 @@ import { MatNavList } from "@angular/material/list";
 import { LoginModule } from './pages/login/login.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
+import { StepDisplayComponent } from './shared/step-display/step-display.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+
   ],
   imports: [
     BrowserModule,

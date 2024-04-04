@@ -2,8 +2,15 @@
   "hosting": [
     {
       "target": "recept-kezelo",
-      "source": ".",
+      "source":".",
+      
       "frameworksBackend": {}
+    }
+  ],
+  "rewrites":[
+    {
+      "source":"**",
+      "destination":"/index.html"
     }
   ]
 }

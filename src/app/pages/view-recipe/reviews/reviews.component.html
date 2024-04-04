@@ -1,18 +1,22 @@
-<div>
+<div class="commentPart">
+
     <ng-container *ngFor="let rev of reviews ;">
-        <div>
-            <p>{{nameForId[rev.reviewer]}}</p>
-            <p>{{rev.date|date:"YYYY-MM-dd HH:mm:ss"}}</p>
-        </div>
-        <div>
-            {{rev.text}}
+        <div class="aComment">
+            <div class="revcred">
+                <p>{{nameForId[rev.reviewer]}}</p>
+                <p>{{rev.date|date:"YYYY-MM-dd HH:mm"}}</p>
+            </div>
+            <div>
+                {{rev.text}}
+            </div>
         </div>
     </ng-container>
-</div>
-<div *ngIf="loggedInUser">
-    <mat-form-field>
-        <mat-label for="review">Oszd meg véleményed!</mat-label>
-        <textarea matInput type="text" [formControl]="review"></textarea>
-    </mat-form-field>
-    <button (click)="addReview()" mat-fab color="primary"> <mat-icon>done</mat-icon> </button>
+
+    <div *ngIf="loggedInUser" class="addComment">
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label for="review">Oszd meg véleményed!</mat-label>
+            <textarea matInput type="text" [formControl]="review"></textarea>
+        </mat-form-field>
+        <button (click)="addReview()" mat-fab color="primary"> <mat-icon>done</mat-icon> </button>
+    </div>
 </div>

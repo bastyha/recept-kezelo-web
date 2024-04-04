@@ -8,6 +8,7 @@ import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {  MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PipeShareModule } from '../../shared/pipe-share/pipe-share.module';
+import { StepDisplayComponent } from '../../shared/step-display/step-display.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PipeShareModule } from '../../shared/pipe-share/pipe-share.module';
     MatProgressSpinnerModule,
     MatButtonModule, 
     MatIconModule,
-    PipeShareModule
+    PipeShareModule,
+    StepDisplayComponent
   ],
 
 })

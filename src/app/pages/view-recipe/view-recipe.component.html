@@ -1,16 +1,28 @@
-<h1>{{recipe?.name}}</h1>
-<img *ngIf="pic.get(recipe?.id??'')" [src]="pic.get(recipe?.id??'')" />
-<div>{{recipe?.timeInMinutes??0|minuteToHours}}</div>
-<div>Készítette: {{owner?.name?.lastname}} {{owner?.name?.firstname}}</div>
-<ul >
-    <ng-container *ngFor="let ing of recipe?.ingredients;">
-        <li>{{ing.amount}} {{ing.unit}} {{ing.nameOfIngredient}}</li>
-    </ng-container>
-</ul>
-<ol>
-    <ng-container *ngFor="let step of recipe?.steps;">    
-        <li>{{step.stepDescription}}</li>
-    </ng-container>
-</ol>
+<div class="kepes">
 
+    <h1>{{recipe?.name}}</h1>
+    <img *ngIf="pic.get(recipe?.id??'')" [src]="pic.get(recipe?.id??'')" />
+</div>
+
+<div class="maker">Készítette: {{owner?.name?.lastname}} {{owner?.name?.firstname}}</div>
+<div class="centerer"><mat-icon>timer</mat-icon> {{recipe?.timeInMinutes??0|minuteToHours}}</div>
+<div class="mainpart">
+
+    <h2>Hozzávalók:</h2>
+    <ul class="ingre">
+        <ng-container *ngFor="let ing of recipe?.ingredients;">
+            <li>{{ing.amount}} {{ing.unit}} {{ing.nameOfIngredient}}</li>
+        </ng-container>
+    </ul>
+    <h2>Elkészítés lépései:</h2>
+    <ng-container *ngFor="let step of recipe?.steps; let i= index"> 
+        <div class="aStep">
+            
+            <app-step-display>{{i+1}}.</app-step-display>
+            <div>{{step.stepDescription}}</div>
+        </div>   
+    </ng-container>
+    
+    
+</div>
 <app-reviews [currentRecipe]="recipe"></app-reviews>

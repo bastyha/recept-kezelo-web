@@ -24,13 +24,13 @@ export class LoginComponent {
         
       }).catch(error => {
         
-        alert("Incorrect email or password!");
+        alert("Hibás jelszó, vagy email!");
         this.loading=false;
       });
      
       
     }else{
-      alert("Email or password not provided");
+      alert("Nem adtad meg az emailt vagy jelszavat");
       this.loading=false;
     }
   }

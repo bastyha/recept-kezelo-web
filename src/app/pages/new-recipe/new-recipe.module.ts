@@ -10,6 +10,7 @@ import { NewRecipeComponent } from './new-recipe.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { StepDisplayComponent } from '../../shared/step-display/step-display.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatCardModule,
     MatIconModule, 
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StepDisplayComponent
   ]
 })
 export class NewRecipeModule { }

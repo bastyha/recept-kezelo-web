@@ -1,4 +1,78 @@
 .recipeform{
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+
 }
+
+mat-card-actions{
+    display: flex;
+    justify-content: center;
+}
+mat-card{
+    margin: 15px 0px;
+}
+
+.leader{
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 10px;
+}
+.deleterCenter{
+    margin: 10px 0;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+    background-color: #ce93d836;
+    border-radius: 20px;
+}
+
+.deleterCenterStep{
+    margin: 10px 0;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 15% auto 15%;
+    gap: 5px;
+    background-color: #ce93d836;
+    border-radius: 20px;
+}
+.deleterCenterStep mat-form-field, .deleterCenter mat-form-field{
+    width: 100%;
+}
+
+.deleterCenter > *, .deleterCenterStep > *{
+    margin: auto;
+}
+.formfields{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:10px;
+}
+.centerlast{
+    display: block;
+    width: fit-content;
+    margin: 15px auto;
+}
+@media screen and (max-width:600px) {
+    .recipeform{
+        width: 95%;
+      
+    }
+    .deleterCenterStep{
+        padding: 2px;
+        grid-template-columns: auto auto auto;
+    }
+    mat-card-content{
+        padding:  2px;
+    }
+    .deleterCenterStep mat-form-field{
+        width: 100%;
+    }
+}
+

@@ -2,3 +2,68 @@ img{
     max-width: 20vw;
     max-height: 20vh;
 }
+h1{
+    cursor: pointer;
+    color: #4A148C;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+}
+h1:hover{
+    color: #E65100;
+}
+h2{
+    text-align: center;
+    width: 100%;
+}
+mat-card{
+    margin: 15px;
+    background-color: #ce93d836;
+}
+
+.ingre{
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 15px;
+}
+.aStep{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    background-color:#ce93d865 ;
+    padding: 10px;
+    border-radius: 15px;
+}
+mat-card-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.notrecipe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+@media screen and (min-width:700px) {
+    mat-card{
+        width: 60%;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .ingre{
+        width: 60%;
+        margin: auto;
+      
+    }
+}

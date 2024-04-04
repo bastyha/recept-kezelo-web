@@ -3,18 +3,18 @@
         <mat-icon>home</mat-icon>
     </a>
     <a mat-list-item *ngIf="(loggedInUserInput)" routerLink="/new-recipe" (click)="close()">
-        <span>Add recipe</span>
+        <span>Új recept</span>
     </a>
     <a mat-list-item *ngIf="(loggedInUserInput)" routerLink="/own-recipes" (click)="close()">
-        <span>Profil</span>
+        <span>Saját receptek</span>
     </a>
     <a mat-list-item *ngIf="!(loggedInUserInput)" routerLink="/login" (click)="close()">
-        <span>Login</span>
+        <span>Bejelentkezés</span>
     </a>
-    <a mat-list-item *ngIf="(loggedInUserInput)" (click)="logout()">
+    <a style="cursor: pointer;" mat-list-item *ngIf="(loggedInUserInput)" (click)="logout()">
         <ng-container [ngSwitch]="isSideNav">
             <mat-icon *ngSwitchCase="true">logout</mat-icon>
-            <span *ngSwitchCase="false">Logout</span>
+            <span *ngSwitchCase="false">Kijelentkezés</span>
         </ng-container>
     </a>
 </mat-nav-list>

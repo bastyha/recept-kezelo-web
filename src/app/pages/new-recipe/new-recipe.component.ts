@@ -43,7 +43,7 @@ export class NewRecipeComponent implements OnInit {
     const l_ingredientForm = this.fb.group({
       nameOfIngredient: [ingredient?ingredient.nameOfIngredient:'', [Validators.required, Validators.minLength(1), Validators.maxLength(200), Validators.pattern(/(\S)+/)]],
       amount: [ingredient?ingredient.amount:0, [Validators.required, Validators.min(0), Validators.max(9999)]],
-      unit: [ingredient? ingredient.unit:'', [Validators.required, Validators.pattern(/(\S)+/), Validators.min(0), Validators.max(20)]]
+      unit: [ingredient? ingredient.unit:'', [Validators.required, Validators.pattern(/(\S)+/), Validators.minLength(0), Validators.maxLength(20)]]
     });
     this.ingerdients.push(l_ingredientForm);
   }
@@ -64,10 +64,16 @@ export class NewRecipeComponent implements OnInit {
     return (+inputString[0]) * 60 + (+inputString[1]);
   }
   onFileSelected(event: any) {
+    const inpFileName = event.target.files[0].name.split('.');
     if (event?.target.files.length > 1) {
-      alert('Choose 1 picture only');
+      alert('Csak 1 képet válassz');
     }
-    this.selectedFile = event?.target.files[0];
+    else if(inpFileName[inpFileName.length-1]!="png" && inpFileName[inpFileName.length-1]!="jpg" && inpFileName[inpFileName.length-1]!="jpeg"){
+      alert("Képet válassz!");
+      event.target.value = "";
+    }else{
+      this.selectedFile = event?.target.files[0];
+    }
   }
   async onSubmit() {
     
@@ -85,7 +91,11 @@ export class NewRecipeComponent implements OnInit {
 
       let picture: Picture |null = null;
       if (this.selectedFile) {
-        if(this.baseRecipe){
+        const inpFileName = this.selectedFile.name.split('.');
+        if(inpFileName[inpFileName.length-1]!="png" || inpFileName[inpFileName.length-1]!="jpg" || inpFileName[inpFileName.length-1]!="jpeg"){
+          alert("Nem lehet nem képet feltölteni")
+        }
+        else if(this.baseRecipe){
           picture= (await firstValueFrom(this.pictureServ.getPicture(this.baseRecipe.image_id)))[0];
         }else if(!this.baseRecipe){
           picture={
@@ -116,6 +126,9 @@ export class NewRecipeComponent implements OnInit {
         });
         this.loading = false;
       }
+    }else{
+      this.loading = false;
+      alert("Az űrlapon valami nem megfelelő!");
     }
   }
   ngOnInit(): void {
