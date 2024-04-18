@@ -91,19 +91,39 @@ export class NewRecipeComponent implements OnInit {
 
       let picture: Picture |null = null;
       if (this.selectedFile) {
+    
         const inpFileName = this.selectedFile.name.split('.');
         if(inpFileName[inpFileName.length-1]!="png" && inpFileName[inpFileName.length-1]!="jpg" && inpFileName[inpFileName.length-1]!="jpeg"){
-          alert("Nem lehet nem képet feltölteni")
+          alert("Nem lehet nem képet feltölteni");
         }
         else if(this.baseRecipe){
+          
+        try{
           picture= (await firstValueFrom(this.pictureServ.getPicture(this.baseRecipe.image_id)))[0];
+          if(!picture){
+            picture={
+              id:"",
+              extension:"",
+              uploader:this.loggedinGuy.uid
+            }
+          }
+          
+        }catch (e){
+          console.error(e);
+        }
         }else if(!this.baseRecipe){
+        
           picture={
             id:"",
             extension:"",
             uploader:this.loggedinGuy.uid
           }
-          await this.pictureServ.create(picture, this.selectedFile);
+          try{
+
+            await this.pictureServ.create(picture, this.selectedFile);
+          }catch (e){
+            console.error(e);
+          }
           recipe.image_id = picture.id;
         }
       }
