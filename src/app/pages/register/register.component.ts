@@ -40,9 +40,24 @@ export class RegisterComponent {
 
         this.userServ.create(user).then(_=>
           this.router.navigateByUrl("/main")
-          ).catch(error =>{console.error(error);this.loading=false});
-        }).catch(error => {console.error(error);this.loading=false;});
-      }else{
+          ).catch(error =>{
+            console.error(error);
+            this.loading=false;
+          });
+        }).catch(error => {
+          this.loading=false;
+          if(error.code=="auth/email-already-in-use"){
+            alert("Ilyen emaillel már valaki regisztrált");
+          }else{
+
+            console.error(error);
+          }
+        });
+      }else if(this.registerForm.get("password")?.value!=this.registerForm.get("rePassword")?.value){
+        alert("Jelszavak nem egyeznek");
+        this.loading=false;
+      }
+      else{
         alert("Nincs minden szükséges mező kitöltve");
         this.loading=false;
       }
