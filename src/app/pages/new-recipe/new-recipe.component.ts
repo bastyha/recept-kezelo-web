@@ -52,7 +52,7 @@ export class NewRecipeComponent implements OnInit {
   }
   addStep(step:any=null) {
     const stepForm = this.fb.group({
-      stepDescription: [step? step.stepDescription:'', [Validators.required, Validators.maxLength(200)]]
+      stepDescription: [step? step.stepDescription:'', [Validators.required, Validators.maxLength(600)]]
     })
     this.steps.push(stepForm);
   }
